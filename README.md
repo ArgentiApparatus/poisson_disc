@@ -1,20 +1,19 @@
 # Poisson Disc
 
-A generator of Poisson Disc distributions of points using the Bridson algorithm.
+Generators of Poisson Disc point distributions.
 
-## Functions
+## Installing
 
-Two functions are provided:
+## Usage
 
-    poissonDisc2(num min, num wdth, num hght)
+### Bridson
 
-generates a Poisson Disc distribution over an axis aligned bounding box [0,0] → [`wdth`,`hght`] with a minimum separation of `min`.
+Bridson Poisson Disc Distribution generator provides: two 'normalized' distribution methods.
 
-    poissonDisc2Normalized(int wdth, int hght)
+    Iterable<Vector2> Bridson.aabbNative(int wdth, [int hght]) sync* {
 
-generates a Poisson Disc distribution over an axis aligned bounding box [0,0] → [`wdth`,`hght`] with a minimum separation of √2.
+    Iterable<Vector2> normalizedToroidal(int wdth, [int hght]) sync* {
 
-The Bridson algorithm places points it has identified into a grid structure of square cells so that it can efficiently find the separation of new candidate points from nearby points. The grid cell size is chosen so that only one point may fall in each cell (cell width = minimum separation / √2). The implementation of the Bridson algorithm is significantly simplified by assuming a minimum separation of √2 which results in a grid cell width of 1. (`wdth` and`hght` then specify the dimensions of the grid in number of cells.)
+Each generates a Poisson Disc distribution over an axis aligned bounding box [0,0] → [`wdth`,`hght`] with a minimum point separation of √2.
 
-`poissonDisc2()` is a wrapper around `poissonDisc2Normalized()`, providing the necessary grid dimensions and scaling the output points to the required separation.
-
+This is 'normalized' to the underlying grid that the algorithm uses efficiently find the separation of points. The grid cell size is chosen so that only one point may be in each cell (cell width = minimum separation / √2). The implementation of the Bridson algorithm is significantly simplified by normalizing to a minimum separation √2, which results in a grid cell width of 1. The axis aligned bounding box width and height parameters are integers so that the distribution area can be divided into whole cells. 

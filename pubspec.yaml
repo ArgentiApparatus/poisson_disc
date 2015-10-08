@@ -1,7 +1,7 @@
 name: poisson_disc
-version: 1.0.0
+version: 2.0.0
 author: Gary Smith <argentiapparatus@gmail.com>
-description: Poisson disc distribution implementation using the Bridson algorithm.
+description: Poisson disc point distribution implementations.
 homepage: https://github.com/argentiapparatus/poisson_disc
 environment:
   sdk: '>=1.9.0'
