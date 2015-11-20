@@ -1,19 +1,41 @@
-# Poisson Disc
+# Dart Poisson Disc
 
 Generators of Poisson Disc point distributions.
 
-## Installing
+## Current Features
 
-## Usage
+* 2D Poisson Disc point distributions generated using [Bridson's Algorithm](https://www.cs.ubc.ca/~rbridson/docs/bridson-siggraph07-poissondisk.pdf)
 
-### Bridson
+See these two pages for easy to digest explainations of the algorithm:
 
-Bridson Poisson Disc Distribution generator provides: two 'normalized' distribution methods.
+* [http://bost.ocks.org/mike/algorithms/](http://bost.ocks.org/mike/algorithms/)
+* [https://www.jasondavies.com/poisson-disc/](https://www.jasondavies.com/poisson-disc/)
 
-    Iterable<Vector2> Bridson.aabbNative(int wdth, [int hght]) sync* {
+## Getting started
 
-    Iterable<Vector2> normalizedToroidal(int wdth, [int hght]) sync* {
+1. Add the following to your project's pubspec.yaml and run `pub get`:
 
-Each generates a Poisson Disc distribution over an axis aligned bounding box [0,0] → [`wdth`,`hght`] with a minimum point separation of √2.
+    ```yaml
+    dependencies:
+      poisson_disc: '^2.0.0'
+    ```
+2. Add the correct import for your project:
 
-This is 'normalized' to the underlying grid that the algorithm uses efficiently find the separation of points. The grid cell size is chosen so that only one point may be in each cell (cell width = minimum separation / √2). The implementation of the Bridson algorithm is significantly simplified by normalizing to a minimum separation √2, which results in a grid cell width of 1. The axis aligned bounding box width and height parameters are integers so that the distribution area can be divided into whole cells. 
+    ```dart
+    import 'package:poisson_disc/bridson2.dart' as bridson2;
+    ```
+3. Invoke:
+
+    ```dart
+	for (Vector2 v in bridson2.generate(wdth: 256, hght: 128, toroidal: true)) {
+	  // Do something with points here
+	}
+	```
+
+## Examples
+
+1. `./example/bridson2`
+
+    Demonstrates toroidal and non-toroidal Poisson Disc distributions an compares probability distributions of points for each.
+    
+    

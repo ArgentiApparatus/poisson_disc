@@ -8,7 +8,10 @@
 
 ### Changed
 
-- Moved top level; distribution generation functions inside of classes as static methods. Classes represent distribution generation algorthims.
-- Renamed distribution generation functions.
-- Added option for generation of toroidal Poisson Disc point distributions.
+- Created Bridson2 library and removed Poisson Disc library
+- Documented Bridson2 library
+- Renamed Bridson distribution generation function
+- Added option for generation of toroidal distributions
+- Added basic unit tests
+
 

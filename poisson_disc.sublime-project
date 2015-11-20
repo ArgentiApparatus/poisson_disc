@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"folder_exclude_patterns": [".pub", "**/packages", "build"],
+			"file_exclude_patterns":   ["pubspec.lock", ".packages"]
+		}
+	]
+}

@@ -1,12 +1,17 @@
-# Pub
-/.buildlog
-/.packages
-/.pub/
-/build/
-**/packages
+# Files and directories created by pub
+.buildlog
+.packages
+.project
+.pub/
+build/
+**/packages/
 
-# Dart Doc
-doc
+# Directory created by dartdoc
+doc/api/
 
 # This is a library package
 pubspec.lock
+
+# Sublime Text
+*.sublime-workspace
+

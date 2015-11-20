@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Dart Poisson Disc Point Distribution Generator Demonstration</title>
+    <script async type="application/dart" src="main.dart"></script>
+    <script async src="packages/browser/dart.js"></script>
+    <link rel='stylesheet' href='style.css'/>
+  </head>
+  <body>
+
+    <h1>Dart Poisson Disc Point Distribution Generator Demonstration</h1>
+
+    <section>
+    
+      <h2>Basic Poisson Disc Point Distribution</h2>
+      
+      <p>Circles are drawn around points with a radius of half the minimum point separation. The discs should not overlap if points are separated properly.</p>
+      <p>The grid shown is that which the algorithm uses to accelerate comparing distances between points. Cell size is min separation / √2 so that cells contain at most a single point.</p>
+
+      <p>Click on the diagram to generate and animate a new distribution.</p>
+      <div class='display' id='d0'>
+        <div class='run'>Click to refresh</div>
+      </div>
+      
+      <p>The animation shows how the bridson algorithm finds new points incrementally building on existing points. The initial point is chosen randomly.</p>
+      <p>Notice how the animation can be cleared and restarted by clicking on the diagram, and other examples on this page are responsive while the animation is running. The Poisson Disc distribution generator function returns a lazy <code>Iterable</code> that generates points only as they are asked for (Bridson's algorthim is well suited to this as it produces points incrementally). Point request and draw tasks are put on the task queue scheduled to execute regular times in the future using a <code>new Timer.periodic()</code> which allows event handlers to fire. The number of points in these examples does not take very long to generate but this technique allows for dealing with very large point sets that take significant time to produce.</p>
+      
+      <p> A 2D histogram generated from many distributions shows that points are a little more likely to appear near the edge of the distribution area than in the middle.</p>
+      <p>When the algorithm tries to place a candidate point near the edge of the distribution area there is a lower probability of conflict with an existing point, because no points exist outside of the area.</p>
+      
+      <div class='display' id='d1'>
+        <div class='run'>Click to refresh</div>
+      </div>
+    
+    </section>
+
+    <section>
+
+      <h2>Toroidal Distribution</h2>
+    
+      <p>A rectangular toroidal distribtion can be tiled with copies of itself and preserves Poisson Distribution properties at the borders.</p>
+      <p>In the example below the distribution drawn surrounded by the dges of eight copies of itself to show the tiling property.</p>
+
+      <div class='display' id='d2'>
+        <div class='run'>Click to refresh</div>
+      </div>
+
+      <p>The histogram of the toroidal distribution shows that points are evenly distributed.</p>
+
+      <div class='display' id='d3'>
+        <div class='run'>Click to refresh</div>
+      </div>
+
+    </section>
+  </body>
+</html>
